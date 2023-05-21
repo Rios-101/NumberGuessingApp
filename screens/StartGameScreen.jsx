@@ -1,6 +1,7 @@
 import { Text, TextInput, View, StyleSheet, Alert } from "react-native";
 import PrimaryButton from "../components/PrimaryButton";
 import { useState } from "react";
+import Title from "../components/Title";
 
 const StartGameScreen = ({ setPickedNumber }) => {
   const [numberInput, setNumberInput] = useState("");
@@ -30,26 +31,31 @@ const StartGameScreen = ({ setPickedNumber }) => {
   };
 
   return (
-    <View style={styles.default}>
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.input}
-          maxLength={2}
-          keyboardType="number-pad"
-          value={numberInput}
-          onChangeText={numberInputHandler}
-        />
+    <View style={styles.defaultContainer}>
+      <View style={styles.title}>
+        <Title>Guess My Number</Title>
       </View>
-      <View style={styles.buttonContainer}>
-        <View style={styles.button}>
-          <PrimaryButton style={styles.button} onPress={confirmInputHandler}>
-            Confirm
-          </PrimaryButton>
+      <View style={styles.default}>
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.input}
+            maxLength={2}
+            keyboardType="number-pad"
+            value={numberInput}
+            onChangeText={numberInputHandler}
+          />
         </View>
-        <View style={styles.button}>
-          <PrimaryButton style={styles.button} onPress={resetInputHandler}>
-            Reset
-          </PrimaryButton>
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <PrimaryButton style={styles.button} onPress={confirmInputHandler}>
+              Confirm
+            </PrimaryButton>
+          </View>
+          <View style={styles.button}>
+            <PrimaryButton style={styles.button} onPress={resetInputHandler}>
+              Reset
+            </PrimaryButton>
+          </View>
         </View>
       </View>
     </View>
@@ -57,13 +63,19 @@ const StartGameScreen = ({ setPickedNumber }) => {
 };
 
 const styles = StyleSheet.create({
+  defaultContainer: {
+    flex: 1,
+  },
   default: {
     padding: 10,
-    marginTop: 80,
+    marginTop: 30,
     backgroundColor: "#146C94",
     marginHorizontal: 16,
     borderRadius: 20,
     elevation: 5,
+  },
+  title: {
+    marginTop: 50,
   },
   inputView: {
     textAlign: "center",
@@ -88,6 +100,7 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
+    marginHorizontal: 4,
   },
 });
 
