@@ -1,20 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, StyleSheet, View } from "react-native";
+import StartGameScreen from "./screens/StartGameScreen";
+import { StatusBar } from "expo-status-bar";
+import stich from "./assets/img/second.jpg";
+import stich2 from "./assets/img/first.jpg";
+import { useState } from "react";
+import GameScreen from "./screens/GameScreen";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+  const [pickedNumber, setPickedNumber] = useState();
+
+  let screen = (
+    <ImageBackground source={stich} style={styles.body} resizeMode="cover">
+      <StatusBar style="light" />
+      <StartGameScreen setPickedNumber={setPickedNumber} />
+    </ImageBackground>
   );
+
+  if (pickedNumber) {
+    screen = (
+      <ImageBackground source={stich2} style={styles.body} resizeMode="cover">
+        <StatusBar style="light" />
+        <GameScreen />
+      </ImageBackground>
+    );
+  }
+
+  return <View style={styles.body}>{screen}</View>;
 }
 
 const styles = StyleSheet.create({
-  container: {
+  body: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
