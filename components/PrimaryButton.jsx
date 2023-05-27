@@ -17,7 +17,7 @@ const PrimaryButton = ({ children, onPress }) => {
 const styles = StyleSheet.create({
   buttonOuterContainer: {
     borderRadius: 28,
-    marginVertical: 10,
+    marginVertical: 7,
     overflow: "hidden",
   },
   buttonInnerContainer: {

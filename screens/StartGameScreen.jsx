@@ -1,7 +1,7 @@
 import { Text, TextInput, View, StyleSheet, Alert } from "react-native";
-import PrimaryButton from "../components/PrimaryButton";
+import PrimaryButton from "../components/PrimaryButton.jsx";
 import { useState } from "react";
-import Title from "../components/Title";
+import Title from "../components/Title.jsx";
 
 const StartGameScreen = ({ setPickedNumber }) => {
   const [numberInput, setNumberInput] = useState("");
@@ -37,6 +37,7 @@ const StartGameScreen = ({ setPickedNumber }) => {
       </View>
       <View style={styles.default}>
         <View style={styles.inputView}>
+          <Text style={styles.textInput}>Enter A Number</Text>
           <TextInput
             style={styles.input}
             maxLength={2}
@@ -81,6 +82,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     justifyContent: "center",
     alignItems: "center",
+  },
+  textInput: {
+    color: "white",
+    fontSize: 15,
   },
   input: {
     padding: 10,
